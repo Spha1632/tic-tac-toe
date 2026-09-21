@@ -37,3 +37,22 @@ function gameBoard() {
 
   return { getBoard, resetBoard, addToBoard, printBoard }
 }
+
+function players(name, marker) {
+
+  let score = 0;
+
+  function incrementScore() {
+    score++
+  }
+
+  function resetScore() {
+    score = 0;
+  }
+
+  function getScore() {
+    return score;
+  }
+
+  return { name, marker, incrementScore, resetScore, getScore }
+}
