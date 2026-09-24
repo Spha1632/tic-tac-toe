@@ -140,6 +140,45 @@ function gameController(playerOne, playerTwo) {
 
 (function displayController() {
 
-  
+  let player1name = prompt("Please enter player 1's name")
+  let player2name = prompt("Please enter player 2's name")
+
+  let playerOne = players(player1name, "X");
+  let playerTwo = players(player2name, "O");
+
+  let game = gameController(playerOne, playerTwo);
+
+  const playerOneDivName = document.querySelector(".playerOneName")
+  const playerTwoDivName = document.querySelector(".playerTwoName")
+  const playerOneDivScore = document.querySelector(".playerOneScore")
+  const playerTwoDivScore = document.querySelector(".playerTwoScore")
+
+  function printGrid() {
+
+    const gridContainer = document.querySelector(".container");
+    gridContainer.textContent = "";
+    const playerName = document.querySelector(".player-name");
+    playerName.textContent = game.activePlayer().name
+
+    playerOneDivName.textContent = playerOne.name
+    playerTwoDivName.textContent = playerTwo.name
+
+    playerOneDivScore.textContent = playerOne.getScore();
+    playerTwoDivScore.textContent = playerTwo.getScore();
+
+    for (let row = 0; row < 3; row++) {
+      for (let col = 0; col < 3; col++) {
+
+        const gridItem = document.createElement("button");
+        gridItem.classList.add("grid-item");
+        gridItem.disabled = false;
+        gridItem.dataset.row = row;
+        gridItem.dataset.col = col;
+        gridItem.textContent = game.board.getBoard()[row][col]
+        gridContainer.appendChild(gridItem)
+
+      }
+    }
+  };
 
 })();
