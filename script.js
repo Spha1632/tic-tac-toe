@@ -218,4 +218,29 @@ function gameController(playerOne, playerTwo) {
     })
   }
 
+  function handleRestart() {
+    const gridContainer = document.querySelector(".container");
+
+    gridContainer.addEventListener("click", (e) => {
+      if (e.target.matches(".restart")) {
+        game.board.resetBoard();
+        playerOne.resetScore();
+        playerTwo.resetScore();
+
+        player1name = prompt("Please enter player 1's name")
+        player2name = prompt("Please enter player 2's name")
+
+        playerOne = players(player1name, "X");
+        playerTwo = players(player2name, "O");
+
+        game = gameController(playerOne, playerTwo)
+        printGrid()
+      }
+    })
+  }
+
+  printGrid();
+  handleClick();
+  handleRestart()
+
 })();
