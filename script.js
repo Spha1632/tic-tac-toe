@@ -58,6 +58,11 @@ function players(name, marker) {
 }
 
 function gameController(playerOne, playerTwo) {
+
+  const game = gameBoard();
+  const board = game.getBoard();
+
+  let activePlayer = playerOne;
   
   function checkWinner(marker) {
 
@@ -106,6 +111,28 @@ function gameController(playerOne, playerTwo) {
     }
 
     return false;
+  }
+
+  function switchPlayerTurn() {
+    if (activePlayer === playerOne) {
+      activePlayer = playerTwo
+    } else {
+      activePlayer = playerOne
+    }
+  };
+
+  function getActivePlayer() {
+    return activePlayer;
+  }
+
+  function playRound(row, col) {
+
+    game.addToBoard(row, col, getActivePlayer().marker);
+    if (!checkWinner(playerOne.marker) && !checkWinner(playerTwo.marker)) {
+      switchPlayerTurn();
+    } else {
+      return false
+    }
   }
 
 }
