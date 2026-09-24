@@ -1,0 +1,38 @@
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: repeat(3, 150px);
+    grid-template-rows: repeat(3, 150px);
+    text-align: center;
+}
+
+.grid-item {
+    border: 1px solid black;
+    font-size: 100px;
+    
+}
+
+.score-board {
+    width: 600px;
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    margin-bottom: 25px;
+    font-size: 1.8rem;
+}
+
+.winner-screen {
+    max-width: dvw;
+    text-align: center;
+}
+
+.winner-screen button {
+    font-size: 1.2rem;
+
+}
