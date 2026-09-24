@@ -181,4 +181,41 @@ function gameController(playerOne, playerTwo) {
     }
   };
 
+  function handleClick() {
+    const gridContainer = document.querySelector(".container");
+
+    gridContainer.addEventListener("click", (e) => {
+      if (e.target.matches(".grid-item")) {
+        const row = e.target.dataset.row;
+        const col = e.target.dataset.col;
+
+        if (!game.checkWinner(playerOne.marker) && !game.checkWinner(playerTwo.marker)) {
+          game.playRound(row, col)
+          printGrid();
+        }
+
+        if (game.checkWinner(game.activePlayer().marker)) {
+
+          setTimeout(() => {
+            game.board.resetBoard();
+            game.activePlayer().incrementScore();
+            game = gameController(playerOne, playerTwo);
+            printGrid();
+
+            if (playerOne.getScore() >= 3 || playerTwo.getScore() >= 3) {
+              const winnerScreen = document.createElement("div");
+              winnerScreen.classList.add("winner-screen");
+              gridContainer.textContent = ""
+              winnerScreen.innerHTML =
+                `${game.activePlayer().name} Wins.
+                <button class="restart">Restart Game?</button>
+              `
+              gridContainer.appendChild(winnerScreen)
+            }
+          }, 1000);
+        }
+      }
+    })
+  }
+
 })();
