@@ -135,4 +135,11 @@ function gameController(playerOne, playerTwo) {
     }
   }
 
+  return { playRound, board: game, activePlayer: getActivePlayer, checkWinner }
 }
+
+(function displayController() {
+
+  
+
+})();
