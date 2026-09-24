@@ -56,3 +56,9 @@ function players(name, marker) {
 
   return { name, marker, incrementScore, resetScore, getScore }
 }
+
+function gameController(playerOne, playerTwo) {
+  
+  
+
+}
